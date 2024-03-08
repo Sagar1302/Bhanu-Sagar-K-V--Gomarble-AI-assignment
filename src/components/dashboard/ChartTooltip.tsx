@@ -1,4 +1,5 @@
 import React from "react";
+
 export const ChartTooltip = ({
   active,
   payload,
@@ -10,41 +11,40 @@ export const ChartTooltip = ({
   if (active && payload && payload.length) {
     const dataPoint = payload[0].payload;
 
+    // styling the ChartTooltip
     const tooltipStyle = {
-      left: coordinate.x, // Adjust positioning
-      top: coordinate.y, // Adjust positioning
+      // used to access the cursor pointer to show the particular point data of Areachart
+      left: coordinate.x,
+      top: coordinate.y,
+      width: "auto",
+      height: "auto",
+      color: "#000",
+      backgroundColor: "#FFF",
     };
 
     return (
       <div
-        className="p-1 flex flex-col justify-center items-start border border-black rounded-lg text-zinc-50"
+        className="p-1  items-start border border-grey rounded-lg text-zinc-50"
         style={tooltipStyle}
       >
-        <div
-          style={{
-            position: "absolute",
-            width: "0",
-            height: "0",
-            borderTop: "10px solid transparent",
-            borderBottom: "10px solid transparent",
-            borderRight: "10px solid rgba(0, 0, 0, 0.7)",
-            left: "-10px",
-          }}
-        />
-        <p className="flex text-xs font-semibold">{label}</p>
         <p className="text-xs">
           <span
             className="mr-1"
             style={{
-              width: "0.5px",
-              height: "0.5px",
-              border: `1px solid ${colors?.stroke}`,
-              backgroundColor: colors?.fill,
+              width: "20px",
+              height: "2px",
+              display: "inline-flex",
+              alignItems: "center",
+              backgroundColor: "#03b5eb",
             }}
           >
             &nbsp;&nbsp;&nbsp;&nbsp;
           </span>
-          {`${kpi}: ${dataPoint.value}`}
+
+          {/* label for showing the particular date */}
+          {/* dataPoint.value used to get the particular data of the Areachart at the cursor point  */}
+
+          {`${label} ${"\u00A0"}${"\u00A0"} ${dataPoint.value}`}{" "}
         </p>
       </div>
     );

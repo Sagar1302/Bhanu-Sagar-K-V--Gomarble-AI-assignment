@@ -8,7 +8,7 @@ export const Layout: React.FC<PropsWithChildren> = ({ children }) => {
       <Menu />
       <div className="p-4 bg-zinc-100">
         <Breadcrumb />
-        <div>{children}</div>
+        <div style={{height:'100%'}}>{children}</div>
       </div>
     </div>
   );
